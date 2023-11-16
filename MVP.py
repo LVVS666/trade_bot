@@ -11,18 +11,9 @@ class Coin:
         self.currency = currency
 
 
-    def get_price(self):
-        '''Получение цены на площадке'''
-        pass
-
-    def get_last_price(self):
-        '''Последня цена = цена + комиссия площадки + коммиссия сети'''
-        pass
-
 
 class Market:
-    def __init__(self, name, address, commission, api_key, secret_key=None, passphrase=None):
-        self.name = name
+    def __init__(self, address, commission, api_key=None, secret_key=None, passphrase=None):
         self.address = address
         self.commission = commission
         self.api_key = api_key

@@ -1,6 +1,6 @@
 from okx.MarketData import MarketAPI
 
-from date import BTC, OKB, XRP
+from date import OKB, XRP
 
 
 def get_price_coin_in_okx(coin):

@@ -8,7 +8,6 @@ ArpitrumOne = Network(0.1)
 OKX = Market('здесь адрес кошелька', 2)
 
 #Монеты
-BTC = Coin('BTC', Optimist, 'USDT')
 OKB = Coin('OKB', Optimist, 'USDT')
 XRP = Coin('XRP', Optimist, 'USDT')
 

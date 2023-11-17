@@ -1,6 +1,6 @@
 from okx.MarketData import MarketAPI
 
-from date import BTC, Tether, OKB
+from date import BTC, OKB, XRP
 
 
 def get_price_coin_in_okx(coin):
@@ -13,3 +13,6 @@ def get_price_coin_in_okx(coin):
 def get_comparison_price(coin, network, market):
     '''Сравнение цен на разных биржах'''
     pass
+
+
+

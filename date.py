@@ -9,6 +9,8 @@ OKX = Market('здесь адрес кошелька', 2)
 
 #Монеты
 Tether = Coin('Tether', Optimist, 'USDT')
+BTC = Coin('BTC', Optimist, 'USDT')
+OKB = Coin('OKB', Optimist, 'USDT')
 
 
 

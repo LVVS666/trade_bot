@@ -1,15 +1,11 @@
-from MVP import Network, Coin, Market
-
-#Сети
-Optimist = Network(0.1)
-ArpitrumOne = Network(0.1)
+from MVP import  Coin, Market
 
 #Биржи
 OKX = Market('здесь адрес кошелька', 2)
 
 #Монеты
-OKB = Coin('OKB', Optimist, 'USDT')
-XRP = Coin('XRP', Optimist, 'USDT')
+OKB = Coin('OKB', 0.1, 'USDT')
+XRP = Coin('XRP', 0.1, 'USDT')
 
 
 

@@ -1,13 +1,7 @@
-class Network:
-    def __init__(self, commission):
-        self.commission = commission
-
-
-
 class Coin:
-    def __init__(self, name, network, currency):
+    def __init__(self, name, network_commission, currency):
         self.name = name
-        self.network = network
+        self.network_commission = network_commission
         self.currency = currency
 
 

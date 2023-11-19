@@ -3,7 +3,7 @@ import requests
 
 from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
-from date import XRP
+import data
 
 load_dotenv()
 
@@ -33,3 +33,4 @@ def get_price_coin_in_okx(coin):
 def get_comparison_price(coin, network, market):
     '''Сравнение цен на разных биржах'''
     pass
+

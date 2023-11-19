@@ -5,7 +5,7 @@ from coinbase.wallet.client import Client
 from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
 
-import data
+import data_coin
 
 load_dotenv()
 
@@ -31,7 +31,17 @@ def get_price_coin_in_okx(coin):
     price_coin_okx = api.get_ticker(f'{coin.name}-{coin.currency}')['data'][0]['last']
     return price_coin_okx
 
+
+def get_price_coinsbit(coin):
+    '''Получение цены монеты на coinsbit'''
+    url_api_coinsbit = requests.get(' https://coinsbit.io/api/v1/public/tickers')
+    price_coin_coinsbit = url_api_coinsbit.json()['result'][f'{coin.name}_{coin.currency}']['ticker']['last']
+    return price_coin_coinsbit
+
+
+
 def get_proce_coin_in_coinbase(coin):
+    '''Получение цены монеты на coinbase'''
     client = Client(api_key='КЛЮЧ АПИ', api_secret='СЕКРЕТНЫЙ КЛЮЧ')
     price_coin_coin_base = client.get_spot_price(currency_pair=f'{coin.name}-{coin.currency}')
     return price_coin_coin_base
@@ -40,5 +50,6 @@ def get_proce_coin_in_coinbase(coin):
 def get_comparison_price(coin, network, market):
     '''Сравнение цен на разных биржах'''
     pass
+
 
 

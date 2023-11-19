@@ -1,12 +1,4 @@
-import os
-
-from MVP import  Coin, Market
-from dotenv import load_dotenv
-
-load_dotenv()
-
-#Биржи
-OKX = Market(os.getenv('UID_OKX'), 2)
+from models import  Coin
 
 #Монеты
 XRP = Coin('XRP', 0.2, 'USDT')

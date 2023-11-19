@@ -2,7 +2,6 @@ import os
 import requests
 
 from coinbase.wallet.client import Client
-from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
 
 import data_coin
@@ -25,19 +24,11 @@ def get_price_coin_in_mexc(coin):
     return price_coin_mexc
 
 
-def get_price_coin_in_okx(coin):
-    '''Получение цены монеты на okx '''
-    api = MarketAPI(flag='1', domain='https://www.okx.cab', debug=False)
-    price_coin_okx = api.get_ticker(f'{coin.name}-{coin.currency}')['data'][0]['last']
-    return price_coin_okx
-
-
 def get_price_coinsbit(coin):
     '''Получение цены монеты на coinsbit'''
     url_api_coinsbit = requests.get(' https://coinsbit.io/api/v1/public/tickers')
     price_coin_coinsbit = url_api_coinsbit.json()['result'][f'{coin.name}_{coin.currency}']['ticker']['last']
     return price_coin_coinsbit
-
 
 
 def get_proce_coin_in_coinbase(coin):

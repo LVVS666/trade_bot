@@ -5,7 +5,6 @@ class Coin:
         self.currency = currency
 
 
-
 class Market:
     def __init__(self, name, commission, api_key=None, secret_key=None, passphrase=None):
         self.name = name

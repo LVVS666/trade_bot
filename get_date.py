@@ -42,4 +42,3 @@ def get_price_coin_in_kucoin(coin):
     '''Получение цены монеты на Kucoin'''
     response = requests.get(f'https://api.kucoin.com/api/v1/market/orderbook/level1?symbol={coin.name}-{coin.currency}')
     return response.json()['data']['price']
-

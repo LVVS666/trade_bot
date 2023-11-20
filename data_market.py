@@ -30,7 +30,6 @@ class OKXModel(Market):
             api_key=self.api_key,
             api_secret_key=self.secret_key,
             passphrase=self.passphrase,
-            use_server_time=True
         )
         return Account.get_account_balance()
 
@@ -87,4 +86,3 @@ CoinBase = CoinBaseModel(
 )
 
 
-OKX.get_balance()

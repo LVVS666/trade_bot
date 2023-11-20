@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import requests
 
@@ -24,7 +25,13 @@ class OKXModel(Market):
     def get_balance(self):
         '''Получение баланса аккаунта'''
 
-        Account = AccountAPI(api_key=self.api_key, api_secret_key=self.secret_key, passphrase=self.passphrase)
+        Account = AccountAPI(
+            domain='https://www.okx.cab',
+            api_key=self.api_key,
+            api_secret_key=self.secret_key,
+            passphrase=self.passphrase,
+            use_server_time=True
+        )
         return Account.get_account_balance()
 
 
@@ -80,3 +87,4 @@ CoinBase = CoinBaseModel(
 )
 
 
+OKX.get_balance()

@@ -58,9 +58,9 @@ MEXC = MEXCModel(
                 )
 
 CoinBase = CoinBaseModel(
-    'CoinBase',
-    2,
-    api_key=os.getenv('API_KEY_COINBASE'),
-    secret_key=os.getenv('SECRET_KEY_COINBASE')
+                        'CoinBase',
+                        2,
+                        api_key=os.getenv('API_KEY_COINBASE'),
+                        secret_key=os.getenv('SECRET_KEY_COINBASE')
 )
 

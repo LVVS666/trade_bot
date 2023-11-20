@@ -1,7 +1,5 @@
 import requests
 
-from coinbase.wallet.client import Client
-
 import data_coin
 
 
@@ -12,11 +10,6 @@ def get_price_coin_in_coinsbit(coin):
     return price_coin_coinsbit
 
 
-def get_price_coin_in_coinbase(coin):
-    '''Получение цены монеты на coinbase'''
-    client = Client(api_key='КЛЮЧ АПИ', api_secret='СЕКРЕТНЫЙ КЛЮЧ')
-    price_coin_coin_base = client.get_spot_price(currency_pair=f'{coin.name}-{coin.currency}')
-    return price_coin_coin_base
 
 
 def get_price_coin_in_kucoin(coin):

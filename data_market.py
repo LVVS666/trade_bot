@@ -6,24 +6,37 @@ from models import Market
 from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
 from coinbase.wallet.client import Client
-
+from okx.Account import AccountAPI
 
 load_dotenv()
 
 
 class OKXModel(Market):
     '''Модель класса OKX'''
+
     def get_price_coin_in_okx(self, coin):
         '''Получение цены монеты на okx '''
+
         api = MarketAPI(flag='1', domain='https://www.okx.cab', debug=False)
         price_coin_okx = api.get_ticker(f'{coin.name}-{coin.currency}')['data'][0]['last']
         return price_coin_okx
 
+    def get_balance(self):
+        '''Получение баланса аккаунта'''
+
+        Account = AccountAPI(api_key=self.api_key, api_secret_key=self.secret_key, passphrase=self.passphrase)
+        return Account.get_account_balance()
+
+
+
+
 
 class MEXCModel(Market):
     '''Модель класса MEXC'''
+
     def get_price_coin_in_mexc(self, coin):
         '''Получение цены монеты на mexc'''
+
         url_api_mexc = "https://api.mexc.com/api/v3/ticker/price"
         params = {
             'symbol': f'{coin.name}{coin.currency}',
@@ -35,8 +48,10 @@ class MEXCModel(Market):
 
 class CoinBaseModel(Market):
     '''Модель класса CoinBase'''
+
     def get_price_coin_in_coinbase(self, coin):
         '''Получение цены монеты на coinbase'''
+
         client = Client(api_key=self.api_key, api_secret=self.secret_key)
         price_coin_coin_base = client.get_spot_price(currency_pair=f'{coin.name}-{coin.currency}')
         return price_coin_coin_base['amount']
@@ -63,4 +78,5 @@ CoinBase = CoinBaseModel(
                         api_key=os.getenv('API_KEY_COINBASE'),
                         secret_key=os.getenv('SECRET_KEY_COINBASE')
 )
+
 

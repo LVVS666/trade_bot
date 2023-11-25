@@ -1,6 +1,7 @@
 from models import  Coin
 
 #Монеты
+
 XRP = Coin('XRP', 0.2, 'USDT')
 ETH = Coin('ETH', 0.2, 'USDT')
 BNB = Coin('BNB', 0.2, 'USDT')
@@ -35,5 +36,39 @@ SUI = Coin('SUI', 0.2, 'USDT')
 BTT = Coin('BTT', 0.2, 'USDT')
 GMX = Coin('GMX', 0.2, 'USDT')
 
-
+# TRX,
+# TON,
+#DOT,
+# BCH,
+# ATOM,
+# XLM,
+# XMR,
+# ETC,
+# CRO,
+# FIL,
+# HBAR,
+# APT,
+# ICP,
+# NEAR,
+# OP,
+# ARB,
+# ALGO,
+# FLOW,
+# XTZ,
+# NEO,
+# MINA,
+# IOTA,
+# SUI,
+# BTT,
+# GMX
+coins = [
+    XRP,
+    ETH,
+    BNB,
+    ADA,
+    AVAX,
+    MATIC,
+    LTC,
+    EOS,
+]
 

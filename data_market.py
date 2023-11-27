@@ -132,7 +132,7 @@ list_markets = [OKX, Bitget, CoinsBit, CoinBase, MEXC, Kucoin]
 
 while True:
     for coin in data_coin.coins:
-        bank = 50 - (coin.network_commission + OKX.commission)
+        bank = 1000 - coin.network_commission
         last_price_okx = bank / float(OKX.get_price_coin(coin))
         last_prices_market = {
         'Bitget' : last_price_okx * float(Bitget.get_price_coin(coin)),
@@ -142,5 +142,5 @@ while True:
         'Kucoin' : last_price_okx * float(Kucoin.get_price_coin(coin))
         }
         for key, value in last_prices_market.items():
-            if (value - bank) > 4:
-                print(f'Спред составляет 4 USDT на монету {coin.name} с биржей {key}')
+            if (value - bank) > 0.1:
+                print(f'Спред составляет {value - bank} USDT на монету {coin.name} с биржей {key}')

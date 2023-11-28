@@ -1,5 +1,3 @@
-import time
-from datetime import datetime
 import os
 import requests
 import get_date
@@ -9,7 +7,7 @@ from models import Market
 from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
 from coinbase.wallet.client import Client
-from okx.Account import AccountAPI
+
 
 
 load_dotenv()
@@ -124,17 +122,18 @@ Bitget = BitgetModel('Bitget',
 
 list_markets = [OKX, Bitget, CoinsBit, CoinBase, MEXC, Kucoin]
 
-while True:
-    for coin in data_coin.coins:
-        bank = 100 - coin.network_commission
-        last_price_okx = bank / float(OKX.get_price_coin(coin))
-        last_prices_market = {
-        'Bitget' : last_price_okx * float(Bitget.get_price_coin(coin)),
-        'Coinsbit' : last_price_okx * float(CoinsBit.get_price_coin(coin)),
-        'Coinsbase' : last_price_okx * float(CoinBase.get_price_coin(coin)),
-        'Mexc' : last_price_okx * float(MEXC.get_price_coin(coin)),
-        'Kucoin' : last_price_okx * float(Kucoin.get_price_coin(coin))
-        }
-        for key, value in last_prices_market.items():
-            if (value - bank) > 0.1:
-                print(f'Спред составляет {value - bank} USDT на монету {coin.name} с биржей {key}')
+
+
+        # for coin in data_coin.coins:
+        #     bank = 100 - coin.network_commission
+        #     last_price_okx = bank / float(OKX.get_price_coin(coin))
+        #     last_prices_market = {
+        #     'Bitget' : last_price_okx * float(Bitget.get_price_coin(coin)),
+        #     'Coinsbit' : last_price_okx * float(CoinsBit.get_price_coin(coin)),
+        #     'Coinsbase' : last_price_okx * float(CoinBase.get_price_coin(coin)),
+        #     'Mexc' : last_price_okx * float(MEXC.get_price_coin(coin)),
+        #     'Kucoin' : last_price_okx * float(Kucoin.get_price_coin(coin))
+        #     }
+        #     for key, value in last_prices_market.items():
+        #         if (value - bank) > 0.1:
+        #             return f'Спред составляет {value - bank} USDT на монету {coin.name} с биржей {key}'

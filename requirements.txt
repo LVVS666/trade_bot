@@ -3,4 +3,5 @@ python-dotenv==0.21.1
 python-okx==0.2.3
 pymexc==1.0.10
 coinbase==2.1.0
+aiogram==3.2.0
 

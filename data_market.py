@@ -93,36 +93,30 @@ class CoinsBitModel(Market):
 
 OKX = OKXModel(
                 'OKX',
-                2,
                 api_key=os.getenv('API_KEY_OKX'),
                 secret_key=os.getenv('SECRET_KEY_OKX'),
                 passphrase=os.getenv('PASSPHRASE_OKX')
                 )
 MEXC = MEXCModel(
                 'MEXC',
-                2,
                 api_key=os.getenv('API_KEY_MEXC'),
                 secret_key=os.getenv('SECRET_KEY_MEXC')
                 )
 
 CoinBase = CoinBaseModel(
                         'CoinBase',
-                        2,
                         api_key=os.getenv('API_KEY_COINBASE'),
                         secret_key=os.getenv('SECRET_KEY_COINBASE')
 )
 CoinsBit = CoinsBitModel('CoinsBit',
-                         2,
                          api_key=os.getenv('API_KEY_COINSBIT'),
                          secret_key=os.getenv('SECRET_KEY_COINSBIT')
                          )
 Kucoin = KucoinModel('Kucoin',
-                     2,
                      api_key=os.getenv('API_KEY_KUCOIN'),
                      secret_key=os.getenv('SECRET_KEY_KUCOIN')
                      )
 Bitget = BitgetModel('Bitget',
-                     2,
                      api_key=os.getenv('API_KEY_BITGET'),
                      secret_key=os.getenv('SECRET_KEY_BITGET'),
                      passphrase=os.getenv('PASSPHRASE_BITGET')
@@ -132,7 +126,7 @@ list_markets = [OKX, Bitget, CoinsBit, CoinBase, MEXC, Kucoin]
 
 while True:
     for coin in data_coin.coins:
-        bank = 1000 - coin.network_commission
+        bank = 100 - coin.network_commission
         last_price_okx = bank / float(OKX.get_price_coin(coin))
         last_prices_market = {
         'Bitget' : last_price_okx * float(Bitget.get_price_coin(coin)),

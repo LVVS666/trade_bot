@@ -6,9 +6,8 @@ class Coin:
 
 
 class Market:
-    def __init__(self, name, commission, api_key=None, secret_key=None, passphrase=None):
+    def __init__(self, name, api_key=None, secret_key=None, passphrase=None):
         self.name = name
-        self.commission = commission
         self.api_key = api_key
         self.secret_key = secret_key
         self.passphrase = passphrase

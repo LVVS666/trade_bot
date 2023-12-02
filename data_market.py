@@ -2,13 +2,10 @@ import os
 import requests
 import get_date
 
-import data_coin
 from models import Market
 from okx.MarketData import MarketAPI
 from dotenv import load_dotenv
 from coinbase.wallet.client import Client
-
-
 
 load_dotenv()
 
@@ -100,7 +97,6 @@ MEXC = MEXCModel(
                 api_key=os.getenv('API_KEY_MEXC'),
                 secret_key=os.getenv('SECRET_KEY_MEXC')
                 )
-
 CoinBase = CoinBaseModel(
                         'CoinBase',
                         api_key=os.getenv('API_KEY_COINBASE'),
@@ -119,21 +115,3 @@ Bitget = BitgetModel('Bitget',
                      secret_key=os.getenv('SECRET_KEY_BITGET'),
                      passphrase=os.getenv('PASSPHRASE_BITGET')
                      )
-
-list_markets = [OKX, Bitget, CoinsBit, CoinBase, MEXC, Kucoin]
-
-
-
-        # for coin in data_coin.coins:
-        #     bank = 100 - coin.network_commission
-        #     last_price_okx = bank / float(OKX.get_price_coin(coin))
-        #     last_prices_market = {
-        #     'Bitget' : last_price_okx * float(Bitget.get_price_coin(coin)),
-        #     'Coinsbit' : last_price_okx * float(CoinsBit.get_price_coin(coin)),
-        #     'Coinsbase' : last_price_okx * float(CoinBase.get_price_coin(coin)),
-        #     'Mexc' : last_price_okx * float(MEXC.get_price_coin(coin)),
-        #     'Kucoin' : last_price_okx * float(Kucoin.get_price_coin(coin))
-        #     }
-        #     for key, value in last_prices_market.items():
-        #         if (value - bank) > 0.1:
-        #             return f'Спред составляет {value - bank} USDT на монету {coin.name} с биржей {key}'

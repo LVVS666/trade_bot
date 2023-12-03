@@ -31,7 +31,6 @@ XTZ = Coin('XTZ', 0.2, 'USDT')
 EOS = Coin('EOS', 0.2, 'USDT')
 NEO = Coin('NEO', 0.2, 'USDT')
 MINA = Coin('MINA', 0.2, 'USDT')
-IOTA = Coin('IOTA', 0.2, 'USDT')
 SUI = Coin('SUI', 0.2, 'USDT')
 BTT = Coin('BTT', 0.2, 'USDT')
 GMX = Coin('GMX', 0.2, 'USDT')
@@ -67,7 +66,6 @@ coins = [
     XTZ,
     NEO,
     MINA,
-    IOTA,
     SUI,
     BTT,
     GMX

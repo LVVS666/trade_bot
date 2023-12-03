@@ -12,7 +12,7 @@ def get_spread(coin):
     max_price = max(last_prices_market.items(), key=lambda x: x[1])
     min_price = min(last_prices_market.items(), key=lambda x: x[1])
     coins_one = (100 / max_price[1]) * min_price[1]
-    coins_two = (100 / min_price[1]) * max_price[1]
+    coins_two = ((100-0.2) / min_price[1]) * max_price[1]
     spread = max(coins_one, coins_two) - min(coins_one, coins_two)
     spread_date = {'spread': spread, 'max_price': max_price, 'min_price': min_price}
     return spread_date

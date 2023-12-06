@@ -1,5 +1,6 @@
 import os
 import logging
+import subprocess
 
 from aiogram import Bot, Dispatcher, executor
 from dotenv import load_dotenv
@@ -21,7 +22,17 @@ CHAT_ID = -1002146934058
 
 
 async def send_to_channel():
-    await search_spread_to_market(bot, CHAT_ID)
+    while True:
+        try:
+            await search_spread_to_market(bot, CHAT_ID)
+            logging.info('Бот запущен.')
+        except ConnectionError:
+            logging.error('Произошла ошибка соединения с сервером')
+            # Перезапуск бота.
+            restart_bot = subprocess.Popen(['python', 'bot.py'])
+            restart_bot.wait()
+
+
 
 
 if __name__ == '__main__':

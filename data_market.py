@@ -59,6 +59,34 @@ class MEXCModel(Market):
         return float(price_coin_mexc)
 
 
+class BitgetModel(Market):
+
+    def get_price_coin(self, coin):
+        '''Получение цены монеты на Bitget'''
+        response = requests.get(f'https://api.bitget.com/api/v2/spot/market/tickers?symbol={coin.name}{coin.currency}')
+        return response.json()['data'][0]['lastPr']
+
+
+class CoinBaseModel(Market):
+    '''Модель класса CoinBase'''
+
+    def get_price_coin(self, coin):
+        '''Получение цены монеты на coinbase'''
+
+        client = Client(api_key=self.api_key, api_secret=self.secret_key)
+        price_coin_coin_base = client.get_spot_price(currency_pair=f'{coin.name}-{coin.currency}')
+        return price_coin_coin_base['amount']
+
+
+class CoinsBitModel(Market):
+
+    def get_price_coin(self, coin):
+        '''Получение цены монеты на coinsbit'''
+        url_api_coinsbit = requests.get(' https://coinsbit.io/api/v1/public/tickers')
+        price_coin_coinsbit = url_api_coinsbit.json()['result'][f'{coin.name}_{coin.currency}']['ticker']['last']
+        return price_coin_coinsbit
+
+
 OKX = OKXModel(
                 'OKX',
                 api_key=os.getenv('API_KEY_OKX'),
@@ -70,9 +98,21 @@ MEXC = MEXCModel(
                 api_key=os.getenv('API_KEY_MEXC'),
                 secret_key=os.getenv('SECRET_KEY_MEXC')
                 )
-
-
 Kucoin = KucoinModel('Kucoin',
                      api_key=os.getenv('API_KEY_KUCOIN'),
                      secret_key=os.getenv('SECRET_KEY_KUCOIN')
+                     )
+CoinBase = CoinBaseModel(
+                        'CoinBase',
+                        api_key=os.getenv('API_KEY_COINBASE'),
+                        secret_key=os.getenv('SECRET_KEY_COINBASE')
+)
+CoinsBit = CoinsBitModel('CoinsBit',
+                         api_key=os.getenv('API_KEY_COINSBIT'),
+                         secret_key=os.getenv('SECRET_KEY_COINSBIT')
+                         )
+Bitget = BitgetModel('Bitget',
+                     api_key=os.getenv('API_KEY_BITGET'),
+                     secret_key=os.getenv('SECRET_KEY_BITGET'),
+                     passphrase=os.getenv('PASSPHRASE_BITGET')
                      )
